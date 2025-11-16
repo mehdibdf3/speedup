@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SpeaCup El Biar 🇬🇧☕ – English Speaking Café</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="SpeaCup El Biar – Algeria's 1st caffeinated English speaking spot. Practice English over warm drinks & sweet bites in El Biar, Algiers."
+  />
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --bg-alt: #181818;
+      --accent: #c49a6c;        /* coffee/gold */
+      --accent-soft: #f3e3c5;
+      --text: #f7f7f7;
+      --muted: #bbbbbb;
+      --danger: #e66767;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #242424 0, #050505 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand span.uk-flag {
+      font-size: 1.35rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.3rem;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+        background 0.12s ease-out, color 0.12s ease-out;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #1b1209;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+      background: #d4aa79;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent-soft);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 0.3rem 0.65rem;
+      color: var(--text);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links.mobile-open {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: #070707;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        margin-right: 1.25rem;
+      }
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3rem 0 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.1rem;
+      }
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-size: clamp(2.35rem, 4vw, 3rem);
+      margin: 0.6rem 0 0.4rem;
+      font-weight: 800;
+    }
+
+    .hero-title span.accent {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 1.02rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-tagline {
+      font-size: 0.95rem;
+      color: var(--accent-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #2a2017, #0b0704);
+      border-radius: 24px;
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 0 0,
+        rgba(255, 255, 255, 0.08),
+        transparent 50%
+      );
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .hero-pill {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-soft);
+      opacity: 0.85;
+    }
+
+    .hero-card-title {
+      font-weight: 600;
+      margin-top: 0.35rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .hero-card-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-hours {
+      font-size: 0.85rem;
+      padding: 0.7rem 0.75rem;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-hours span.label {
+      color: var(--accent-soft);
+      font-weight: 600;
+      margin-right: 0.35rem;
+    }
+
+    .mini-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .mini-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--accent-soft);
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 2.5rem 0;
+    }
+
+    section:nth-of-type(odd) {
+      background: radial-gradient(
+        circle at top left,
+        #1a1510 0,
+        #050505 55%
+      );
+    }
+
+    section:nth-of-type(even) {
+      background: radial-gradient(
+        circle at top right,
+        #151515 0,
+        #020202 60%
+      );
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      opacity: 0.85;
+    }
+
+    .section-title {
+      margin: 0.4rem 0;
+      font-size: 1.65rem;
+    }
+
+    .section-subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 32rem;
+      margin-inline: auto;
+    }
+
+    /* CARDS / GRIDS */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.3rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card h3 {
+      margin-top: 0.2rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin: 0.35rem 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--accent-soft);
+      margin-bottom: 0.35rem;
+    }
+
+    .badge.level {
+      margin-right: 0.35rem;
+    }
+
+    .card-footer {
+      margin-top: 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .price {
+      font-weight: 600;
+      color: var(--accent-soft);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.78rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      color: var(--muted);
+    }
+
+    /* PRICING TABLE  */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    @media (max-width: 900px) {
+      .pricing-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .pricing-card {
+      text-align: left;
+    }
+
+    .pricing-card h3 {
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-card .price-main {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0.15rem 0 0.3rem;
+    }
+
+    .pricing-note {
+      text-align: center;
+      margin-top: 1.3rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* EVENTS */
+    .event-date {
+      font-size: 0.8rem;
+      color: var(--accent-soft);
+      margin-bottom: 0.2rem;
+    }
+
+    /* BOOKING FORM */
+    .booking-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 900px) {
+      .booking-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    form {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      color: var(--accent-soft);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.65);
+      color: var(--text);
+      font: inherit;
+      resize: vertical;
+      min-height: 2.2rem;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 1px solid var(--accent);
+      border-color: var(--accent);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .error {
+      font-size: 0.8rem;
+      color: var(--danger);
+      margin-bottom: 0.2rem;
+    }
+
+    .booking-result {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--accent-soft);
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      padding: 0.8rem 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: none;
+    }
+
+    /* PAYMENT INFO CARD */
+    .payment-card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.3rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .payment-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.3rem;
+      font-size: 1.05rem;
+    }
+
+    .payment-methods {
+      margin: 0.6rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .payment-pill {
+      font-size: 0.78rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--accent-soft);
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.4fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0 0;
+      font-size: 0.92rem;
+    }
+
+    .contact-list li {
+      margin-bottom: 0.45rem;
+      color: var(--muted);
+    }
+
+    .contact-list a {
+      color: var(--accent-soft);
+    }
+
+    .map-placeholder {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #101010;
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    iframe {
+      border: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1.4rem 0 1.6rem;
+      background: #020202;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .socials {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .socials a {
+      font-size: 0.9rem;
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <span class="uk-flag">🇬🇧☕</span>
+          <span>SpeaCup El Biar</span>
+        </div>
+        <button class="nav-toggle" id="navToggle">Menu</button>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#concept">Concept</a>
+          <a href="#sessions">Sessions</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#events">Events</a>
+          <a href="#booking">Booking</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-cta">
+          <a href="#booking" class="btn btn-primary">Book now</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Algeria's 1st caffeinated English spot</div>
+            <h1 class="hero-title">
+              Speak <span class="accent">English</span>. Sip coffee. Meet people.
+            </h1>
+            <p class="hero-subtitle">
+              SpeaCup El Biar is a cozy English-speaking café in the heart of El Biar, Algiers. 
+              Practice your English in real conversations – over warm drinks & sweet bites.
+            </p>
+            <p class="hero-tagline">
+              🇬🇧 Practice English over warm drinks & sweet bites.  
+              🇫🇷 Pratique ton anglais autour d’un bon café.
+            </p>
+            <div class="hero-actions">
+              <a href="#booking" class="btn btn-primary">
+                Book a session
+              </a>
+              <a href="#concept" class="btn btn-outline">
+                Discover the concept
+              </a>
+            </div>
+            <div class="hero-meta">
+              <span>📍 El Biar, Algiers</span>
+              <span>🗣 Beginner · Intermediate · Advanced</span>
+              <span>☕ Coffee, tea & sweet bites</span>
+            </div>
+          </div>
+
+          <aside class="hero-card">
+            <div class="hero-pill">SpeaCup El Biar · 🇩🇿</div>
+            <div class="hero-card-title">
+              “English only” island in the middle of Algiers.
+            </div>
+            <p class="hero-card-text">
+              Join small groups or one-to-one sessions with friendly hosts. 
+              Perfect for students, professionals, travellers – or anyone who wants to finally speak.
+            </p>
+            <div class="hero-hours">
+              <span class="label">Hours</span>
+              <span>Check our latest schedule on Instagram: <strong>@speacup.nb</strong></span>
+            </div>
+            <div class="mini-badge-row">
+              <div class="mini-badge">Conversation tables</div>
+              <div class="mini-badge">Game & movie nights</div>
+              <div class="mini-badge">Kids & teens sessions</div>
+            </div>
+            <div class="hero-card-footer">
+              <span>📱 WhatsApp booking available</span>
+              <a
+                href="https://www.instagram.com/speacup.nb/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pill"
+              >
+                View photos on Instagram
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCEPT -->
+    <section id="concept">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Concept</div>
+          <h2 class="section-title">What is SpeaCup?</h2>
+          <p class="section-subtitle">
+            SpeaCup El Biar is a UK-inspired coffee shop built around spoken English. 
+            No classroom, no stress – just real conversations, good coffee, and a friendly community.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <span class="badge">Step 1</span>
+            <h3>Choose your level</h3>
+            <p>
+              Beginner, Intermediate or Advanced – we group people by level so you feel comfortable 
+              and challenged at the same time.
+            </p>
+          </div>
+          <div class="card">
+            <span class="badge">Step 2</span>
+            <h3>Pick your format</h3>
+            <p>
+              Join a conversation table, book a 1-to-1 speaking session, 
+              or enroll your kids in a fun English club.
+            </p>
+          </div>
+          <div class="card">
+            <span class="badge">Step 3</span>
+            <h3>Speak, sip & connect</h3>
+            <p>
+              Practice English, discover new people, and enjoy warm drinks & sweet bites 
+              in a cozy atmosphere.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SESSIONS -->
+    <section id="sessions">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Sessions</div>
+          <h2 class="section-title">Choose your English moment</h2>
+          <p class="section-subtitle">
+            Different formats for different needs – all designed to make you speak more and worry less.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="badge level">Level: B1–C1</div>
+            <h3>Conversation Tables (Adults)</h3>
+            <p>
+              Small group discussions around themes like travel, culture, work, 
+              news & everyday life – guided by a host.
+            </p>
+            <p>Perfect to build fluency, vocabulary & confidence.</p>
+            <div class="card-footer">
+              <span class="price">~90 min · from 1,500 DZD</span>
+              <button class="btn btn-outline" data-session="Conversation Table">
+                Book this
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="badge level">Level: A2–C1</div>
+            <h3>One-to-One Coaching</h3>
+            <p>
+              A private speaking session focused on your goals: job interviews, 
+              studies abroad, presentations or daily conversation.
+            </p>
+            <div class="card-footer">
+              <span class="price">~60 min · from 2,500 DZD</span>
+              <button class="btn btn-outline" data-session="One-to-One Coaching">
+                Book this
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="badge level">Level: Kids · Teens</div>
+            <h3>Kids & Teens Club</h3>
+            <p>
+              Games, stories and activities to help younger learners feel comfortable 
+              speaking English from an early age.
+            </p>
+            <div class="card-footer">
+              <span class="price">~90 min · from 1,200 DZD</span>
+              <button class="btn btn-outline" data-session="Kids & Teens Club">
+                Book this
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Pricing</div>
+          <h2 class="section-title">Simple & flexible options</h2>
+          <p class="section-subtitle">
+            Example pricing – we can adapt packs and discounts depending on your schedule. 
+            All prices are in DZD.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="card pricing-card">
+            <span class="badge">Drop-in</span>
+            <h3>Single Session</h3>
+            <p class="price-main">from 1,500 DZD</p>
+            <p>Pay per session. Ideal if you just want to test the concept or come occasionally.</p>
+          </div>
+
+          <div class="card pricing-card">
+            <span class="badge">Most popular</span>
+            <h3>Monthly Pack (4)</h3>
+            <p class="price-main">from 5,000 DZD</p>
+            <p>4 sessions in one month. Great if you want to keep a regular practice rhythm.</p>
+          </div>
+
+          <div class="card pricing-card">
+            <span class="badge">Intensive</span>
+            <h3>Monthly Pack (8)</h3>
+            <p class="price-main">from 9,000 DZD</p>
+            <p>8 sessions in one month. For high motivation, job preparation or study abroad projects.</p>
+          </div>
+        </div>
+
+        <p class="pricing-note">
+          Online payment via <strong>CIB / Edahabia</strong> coming soon.  
+          For now, booking can be confirmed via WhatsApp or on site.
+        </p>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Events</div>
+          <h2 class="section-title">Special English nights</h2>
+          <p class="section-subtitle">
+            Game nights, debates, movie screenings & themed events – check our Instagram for the latest dates.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="event-date">Every Friday · 19:00</div>
+            <h3>Friday Conversation Night</h3>
+            <p>
+              Join a relaxed, café-style group conversation. New topics every week 
+              and mixed levels to push your speaking comfort zone.
+            </p>
+            <div class="card-footer">
+              <span class="price">Limited seats</span>
+              <button class="btn btn-outline" data-session="Friday Conversation Night">
+                Reserve your spot
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="event-date">Twice a month · 18:00</div>
+            <h3>Movie & Talk Night</h3>
+            <p>
+              Watch clips or short films in English, then discuss characters, story & vocabulary 
+              with the group and the host.
+            </p>
+            <div class="card-footer">
+              <span class="price">Snacks included</span>
+              <button class="btn btn-outline" data-session="Movie & Talk Night">
+                Reserve your spot
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="event-date">Monthly · Saturday</div>
+            <h3>Game Night in English</h3>
+            <p>
+              Board games, word games and speaking challenges to practice English in the most fun way possible.
+            </p>
+            <div class="card-footer">
+              <span class="price">Perfect for friends</span>
+              <button class="btn btn-outline" data-session="Game Night">
+                Reserve your spot
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="booking">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Booking</div>
+          <h2 class="section-title">Book your English moment</h2>
+          <p class="section-subtitle">
+            Fill in the form below and we will confirm your reservation by WhatsApp or email. 
+            No payment is taken on this form yet.
+          </p>
+        </div>
+
+        <div class="booking-layout">
+          <!-- FORM -->
+          <div class="card">
+            <form id="bookingForm">
+              <div id="formError" class="error" style="display:none;">
+                Please fill in all required fields (Name, Phone, Session type, Date, Time).
+              </div>
+              <div class="form-row">
+                <div>
+                  <label for="name">Name *</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div>
+                  <label for="phone">Phone (WhatsApp) *</label>
+                  <input type="tel" id="phone" name="phone" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div>
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" />
+                </div>
+                <div>
+                  <label for="level">Level</label>
+                  <select id="level" name="level">
+                    <option value="">Select level (optional)</option>
+                    <option>Beginner (A1-A2)</option>
+                    <option>Intermediate (B1-B2)</option>
+                    <option>Advanced (C1+)</option>
+                    <option>Not sure</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div>
+                  <label for="sessionType">Session type *</label>
+                  <select id="sessionType" name="sessionType" required>
+                    <option value="">Choose a session</option>
+                    <option>Conversation Table</option>
+                    <option>One-to-One Coaching</option>
+                    <option>Kids & Teens Club</option>
+                    <option>Friday Conversation Night</option>
+                    <option>Movie & Talk Night</option>
+                    <option>Game Night</option>
+                    <option>Other / Not sure</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="date">Preferred date *</label>
+                  <input type="date" id="date" name="date" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div>
+                  <label for="time">Preferred time *</label>
+                  <input type="time" id="time" name="time" required />
+                </div>
+                <div>
+                  <label for="people">Number of people</label>
+                  <input
+                    type="number"
+                    id="people"
+                    name="people"
+                    min="1"
+                    placeholder="1"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label for="message">Message / Notes</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="3"
+                  placeholder="Tell us your goals, level, or any special request."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                Request reservation
+              </button>
+
+              <div id="bookingResult" class="booking-result"></div>
+            </form>
+          </div>
+
+          <!-- PAYMENT INFO / PLACEHOLDER -->
+          <div class="payment-card">
+            <h3>Online payment (coming soon)</h3>
+            <p>
+              After we confirm your booking, you’ll be able to pay online or on site.
+              We’re working on integrating an Algerian payment gateway for:
+            </p>
+            <div class="payment-methods">
+              <span class="payment-pill">CIB</span>
+              <span class="payment-pill">Edahabia</span>
+              <span class="payment-pill">On-site payment</span>
+            </div>
+            <p>
+              For now, once you submit the form, we’ll contact you by WhatsApp to confirm your seat 
+              and explain the payment options.
+            </p>
+            <a href="#contact" class="btn btn-outline" style="margin-top:0.6rem;">
+              Contact us directly
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Contact</div>
+          <h2 class="section-title">Find us in El Biar</h2>
+          <p class="section-subtitle">
+            Call, WhatsApp or DM us on Instagram for any question about schedules, levels or private events.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <h3>Contact & info</h3>
+            <ul class="contact-list">
+              <li>
+                📍 <strong>SpeaCup El Biar</strong><br />
+                El Biar, Algiers – view on
+                <a
+                  href="https://maps.app.goo.gl/6qRYnLizcBpq1cwU6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Google Maps</a
+                >
+              </li>
+              <li>
+                📞 Phone:
+                <a href="tel:+213783135253">+213 783 13 52 53</a>
+              </li>
+              <li>
+                💬 WhatsApp:
+                <a href="https://wa.me/213783135253" target="_blank" rel="noopener noreferrer">
+                  Chat on WhatsApp
+                </a>
+              </li>
+              <li>
+                📸 Instagram:
+                <a
+                  href="https://www.instagram.com/speacup.nb/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >@speacup.nb</a
+                >
+              </li>
+              <li>
+                ✉️ Email (example):
+                <a href="mailto:contact@speacup-elbiar.com">contact@speacup-elbiar.com</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="map-placeholder">
+            <!-- Replace src below with your embed map link if you have it -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb="
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-row">
+        <div>
+          © <span id="year"></span> SpeaCup El Biar – Algeria’s 1st caffeinated English speaking spot.
+        </div>
+        <div class="socials">
+          <a
+            href="https://www.instagram.com/speacup.nb/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Instagram</a
+          >
+          <a href="https://wa.me/213783135253" target="_blank" rel="noopener noreferrer"
+            >WhatsApp</a
+          >
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    navToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("mobile-open");
+    });
+
+    // When clicking an anchor, close mobile menu
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("mobile-open");
+      });
+    });
+
+    // Booking buttons (pre-select session type)
+    const sessionButtons = document.querySelectorAll("button[data-session]");
+    const sessionSelect = document.getElementById("sessionType");
+
+    sessionButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const value = btn.getAttribute("data-session");
+        const options = Array.from(sessionSelect.options);
+        const match = options.find(
+          (opt) => opt.textContent.trim() === value.trim()
+        );
+        if (match) {
+          sessionSelect.value = match.value;
+        } else {
+          sessionSelect.value = "";
+        }
+        document.getElementById("booking").scrollIntoView({
+          behavior: "smooth",
+        });
+      });
+    });
+
+    // Booking form handling
+    const bookingForm = document.getElementById("bookingForm");
+    const bookingResult = document.getElementById("bookingResult");
+    const formError = document.getElementById("formError");
+
+    bookingForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      formError.style.display = "none";
+
+      const name = bookingForm.name.value.trim();
+      const phone = bookingForm.phone.value.trim();
+      const email = bookingForm.email.value.trim();
+      const level = bookingForm.level.value;
+      const sessionType = bookingForm.sessionType.value;
+      const date = bookingForm.date.value;
+      const time = bookingForm.time.value;
+      const people = bookingForm.people.value || "1";
+      const message = bookingForm.message.value.trim();
+
+      if (!name || !phone || !sessionType || !date || !time) {
+        formError.style.display = "block";
+        bookingResult.style.display = "none";
+        return;
+      }
+
+      const recap = `
+        <strong>Thank you, ${name}!</strong><br/>
+        Your reservation request has been recorded.<br/><br/>
+        <strong>Session:</strong> ${sessionType}<br/>
+        <strong>Date & time:</strong> ${date} at ${time}<br/>
+        <strong>People:</strong> ${people}<br/>
+        <strong>Level:</strong> ${level || "Not specified"}<br/>
+        <strong>Phone:</strong> ${phone}<br/>
+        <strong>Email:</strong> ${email || "Not specified"}<br/>
+        <strong>Message:</strong> ${message || "—"}<br/><br/>
+        We will contact you by WhatsApp or email to confirm your booking and share payment options.
+      `;
+
+      bookingResult.innerHTML = recap;
+      bookingResult.style.display = "block";
+
+      // Optionally reset form but keep phone/name
+      bookingForm.message.value = "";
+    });
+  </script>
+</body>
+</html>

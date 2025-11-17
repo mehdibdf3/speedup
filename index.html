@@ -527,7 +527,7 @@
       margin-bottom: 0.2rem;
     }
 
-    /* BOOKING FORM */
+    /* BOOKING LAYOUT (on garde même si on n'utilise plus la grille) */
     .booking-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
@@ -539,100 +539,6 @@
       .booking-layout {
         grid-template-columns: minmax(0, 1fr);
       }
-    }
-
-    form {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    label {
-      font-size: 0.85rem;
-      color: var(--accent-soft);
-      display: block;
-      margin-bottom: 0.15rem;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 0.55rem 0.7rem;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.65);
-      color: var(--text);
-      font: inherit;
-      resize: vertical;
-      min-height: 2.2rem;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: 1px solid var(--accent);
-      border-color: var(--accent);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-    }
-
-    @media (max-width: 600px) {
-      .form-row {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    .error {
-      font-size: 0.8rem;
-      color: var(--danger);
-      margin-bottom: 0.2rem;
-    }
-
-    .booking-result {
-      margin-top: 0.8rem;
-      font-size: 0.9rem;
-      color: var(--accent-soft);
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 12px;
-      padding: 0.8rem 0.9rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      display: none;
-    }
-
-    /* PAYMENT INFO CARD */
-    .payment-card {
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: var(--radius);
-      padding: 1.2rem 1.3rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: var(--shadow);
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .payment-card h3 {
-      margin-top: 0;
-      margin-bottom: 0.3rem;
-      font-size: 1.05rem;
-    }
-
-    .payment-methods {
-      margin: 0.6rem 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .payment-pill {
-      font-size: 0.78rem;
-      padding: 0.18rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--accent-soft);
     }
 
     /* CONTACT */
@@ -1011,129 +917,31 @@
       </div>
     </section>
 
-    <!-- BOOKING -->
+    <!-- BOOKING (CALENDLY) -->
     <section id="booking">
       <div class="container">
         <div class="section-header">
           <div class="section-eyebrow">Booking</div>
           <h2 class="section-title">Book your English moment</h2>
           <p class="section-subtitle">
-            Fill in the form below and we will confirm your reservation by WhatsApp or email. 
-            No payment is taken on this form yet.
+            Choose a day and time directly in the calendar below.
+            Once you confirm on Calendly, your spot is reserved and the time slot is blocked for others.
           </p>
         </div>
 
-        <div class="booking-layout">
-          <!-- FORM -->
-          <div class="card">
-            <form id="bookingForm">
-              <div id="formError" class="error" style="display:none;">
-                Please fill in all required fields (Name, Phone, Session type, Date, Time).
-              </div>
-              <div class="form-row">
-                <div>
-                  <label for="name">Name *</label>
-                  <input type="text" id="name" name="name" required />
-                </div>
-                <div>
-                  <label for="phone">Phone (WhatsApp) *</label>
-                  <input type="tel" id="phone" name="phone" required />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div>
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" />
-                </div>
-                <div>
-                  <label for="level">Level</label>
-                  <select id="level" name="level">
-                    <option value="">Select level (optional)</option>
-                    <option>Beginner (A1-A2)</option>
-                    <option>Intermediate (B1-B2)</option>
-                    <option>Advanced (C1+)</option>
-                    <option>Not sure</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div>
-                  <label for="sessionType">Session type *</label>
-                  <select id="sessionType" name="sessionType" required>
-                    <option value="">Choose a session</option>
-                    <option>Conversation Table</option>
-                    <option>One-to-One Coaching</option>
-                    <option>Kids & Teens Club</option>
-                    <option>Friday Conversation Night</option>
-                    <option>Movie & Talk Night</option>
-                    <option>Game Night</option>
-                    <option>Other / Not sure</option>
-                  </select>
-                </div>
-                <div>
-                  <label for="date">Preferred date *</label>
-                  <input type="date" id="date" name="date" required />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div>
-                  <label for="time">Preferred time *</label>
-                  <input type="time" id="time" name="time" required />
-                </div>
-                <div>
-                  <label for="people">Number of people</label>
-                  <input
-                    type="number"
-                    id="people"
-                    name="people"
-                    min="1"
-                    placeholder="1"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label for="message">Message / Notes</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="3"
-                  placeholder="Tell us your goals, level, or any special request."
-                ></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary">
-                Request reservation
-              </button>
-
-              <div id="bookingResult" class="booking-result"></div>
-            </form>
-          </div>
-
-          <!-- PAYMENT INFO / PLACEHOLDER -->
-          <div class="payment-card">
-            <h3>Online payment (coming soon)</h3>
-            <p>
-              After we confirm your booking, you’ll be able to pay online or on site.
-              We’re working on integrating an Algerian payment gateway for:
-            </p>
-            <div class="payment-methods">
-              <span class="payment-pill">CIB</span>
-              <span class="payment-pill">Edahabia</span>
-              <span class="payment-pill">On-site payment</span>
-            </div>
-            <p>
-              For now, once you submit the form, we’ll contact you by WhatsApp to confirm your seat 
-              and explain the payment options.
-            </p>
-            <a href="#contact" class="btn btn-outline" style="margin-top:0.6rem;">
-              Contact us directly
-            </a>
+        <div class="card" style="padding:0; overflow:hidden;">
+          <div
+            class="calendly-inline-widget"
+            data-url="https://calendly.com/boudiafmehdi03/1-to-1-english-session-speacup-el-biar"
+            style="min-width:320px;height:700px;">
           </div>
         </div>
+
+        <script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async>
+        </script>
       </div>
     </section>
 
@@ -1242,71 +1050,14 @@
       });
     });
 
-    // Booking buttons (pre-select session type)
+    // Booking buttons: just scroll to Calendly (no form anymore)
     const sessionButtons = document.querySelectorAll("button[data-session]");
-    const sessionSelect = document.getElementById("sessionType");
-
     sessionButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
-        const value = btn.getAttribute("data-session");
-        const options = Array.from(sessionSelect.options);
-        const match = options.find(
-          (opt) => opt.textContent.trim() === value.trim()
-        );
-        if (match) {
-          sessionSelect.value = match.value;
-        } else {
-          sessionSelect.value = "";
-        }
         document.getElementById("booking").scrollIntoView({
           behavior: "smooth",
         });
       });
-    });
-
-    // Booking form handling
-    const bookingForm = document.getElementById("bookingForm");
-    const bookingResult = document.getElementById("bookingResult");
-    const formError = document.getElementById("formError");
-
-    bookingForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      formError.style.display = "none";
-
-      const name = bookingForm.name.value.trim();
-      const phone = bookingForm.phone.value.trim();
-      const email = bookingForm.email.value.trim();
-      const level = bookingForm.level.value;
-      const sessionType = bookingForm.sessionType.value;
-      const date = bookingForm.date.value;
-      const time = bookingForm.time.value;
-      const people = bookingForm.people.value || "1";
-      const message = bookingForm.message.value.trim();
-
-      if (!name || !phone || !sessionType || !date || !time) {
-        formError.style.display = "block";
-        bookingResult.style.display = "none";
-        return;
-      }
-
-      const recap = `
-        <strong>Thank you, ${name}!</strong><br/>
-        Your reservation request has been recorded.<br/><br/>
-        <strong>Session:</strong> ${sessionType}<br/>
-        <strong>Date & time:</strong> ${date} at ${time}<br/>
-        <strong>People:</strong> ${people}<br/>
-        <strong>Level:</strong> ${level || "Not specified"}<br/>
-        <strong>Phone:</strong> ${phone}<br/>
-        <strong>Email:</strong> ${email || "Not specified"}<br/>
-        <strong>Message:</strong> ${message || "—"}<br/><br/>
-        We will contact you by WhatsApp or email to confirm your booking and share payment options.
-      `;
-
-      bookingResult.innerHTML = recap;
-      bookingResult.style.display = "block";
-
-      // Optionally reset form but keep phone/name
-      bookingForm.message.value = "";
     });
   </script>
 </body>

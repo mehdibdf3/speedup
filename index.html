@@ -527,7 +527,7 @@
       margin-bottom: 0.2rem;
     }
 
-    /* BOOKING LAYOUT (on garde même si on n'utilise plus la grille) */
+    /* BOOKING LAYOUT  */
     .booking-layout {
       display: grid;
       grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
@@ -997,7 +997,7 @@
           </div>
 
           <div class="map-placeholder">
-            <!-- Replace src below with your embed map link if you have it -->
+            
             <iframe
               src="https://www.google.com/maps/embed?pb="
               loading="lazy"
@@ -1050,7 +1050,7 @@
       });
     });
 
-    // Booking buttons: just scroll to Calendly (no form anymore)
+    // Booking buttons: just scroll to Calendly 
     const sessionButtons = document.querySelectorAll("button[data-session]");
     sessionButtons.forEach((btn) => {
       btn.addEventListener("click", () => {
